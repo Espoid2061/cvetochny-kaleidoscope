@@ -3,141 +3,254 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Цветочный калейдоскоп — Розы</title>
+  <title>Цветочный Калейдоскоп</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-image: url('https://i.pinimg.com/736x/d7/f1/31/d7f13115e8857669be9344170d2231a3.jpg');
-      background-size: contain;   /* картинка целиком */
-      background-position: center; /* по центру */
-      background-repeat: no-repeat; /* не повторяется */
-      background-attachment: fixed; /* фон «приклеен» */
-      background-color: #f5f5f5; /* цвет вокруг картинки */
+      color: #333;
+      background-image: url('https://i.pinimg.com/736x/1e/24/7c/1e247cbd09347c70b58ab3dbcc1a87a4.jpg');
+      background-size: cover;       /* растягиваем, чтобы покрыть весь экран */
+      background-position: center;  /* центрируем */
+      background-repeat: no-repeat;  /* без повторов */
+      background-attachment: fixed;  /* фон не движется при прокрутке */
     }
     header {
       background: rgba(255, 255, 255, 0.9);
-      padding: 15px;
-      text-align: center;
-      font-size: 24px;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      color: #d32f2f;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
       font-weight: bold;
-      border-bottom: 2px solid #ddd;
+    }
+    .breadcrumbs {
+      font-size: 14px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid #eee;
+    }
+    .breadcrumbs a {
+      text-decoration: none;
+      color: #666;
+    }
+    section {
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .count {
+      color: #777;
+      margin-bottom: 20px;
     }
     .catalog {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
-      padding: 20px;
     }
     .card {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: 0.3s;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .card-content {
-      padding: 15px;
+      max-width: 100%;
+      border-radius: 6px;
     }
     .card h3 {
-      margin: 0 0 10px;
       font-size: 18px;
+      margin: 10px 0 5px;
       min-height: 48px;
     }
-    .card p {
-      margin: 0 0 10px;
-      font-size: 14px;
-      color: #555;
+    .price {
+      color: #d32f2f;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
-    .card a {
-      display: inline-block;
-      padding: 10px 15px;
-      background: #e91e63;
-      color: #fff;
-      border-radius: 5px;
+    .buy-btn {
+      background: #d32f2f;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
       text-decoration: none;
-      transition: 0.3s;
+      display: inline-block;
     }
-    .card a:hover {
-      background: #ad1457;
+    .buy-btn:hover {
+      background: #b71c1c;
     }
-    form {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 20px;
-      margin: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    form input, form textarea, form button {
+    form input, form textarea {
       width: 100%;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 5px;
+      padding: 8px;
+      margin-bottom: 10px;
       border: 1px solid #ccc;
-      font-size: 14px;
+      border-radius: 4px;
     }
     form button {
-      background: #4caf50;
-      color: #fff;
-      border: none;
+      width: 100%;
       font-size: 16px;
+      padding: 10px;
+      background: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background 0.3s;
     }
     form button:hover {
       background: #388e3c;
     }
+    footer {
+      background: rgba(51, 51, 51, 0.9);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    footer a {
+      color: #ffccbc;
+      text-decoration: none;
+    }
     @media (max-width: 600px) {
-      .catalog { grid-template-columns: 1fr; }
-      header { font-size: 20px; }
+      .catalog {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
-  <header>🌹 Цветочный калейдоскоп — Каталог роз</header>
 
-  <section class="catalog">
-    <div class="card">
-      <img src="https://raw.githubusercontent.com/espoid2061/cvetochny-kaleidoscope/main/rose1.jpg" alt="Роза 1">
-      <div class="card-content">
+  <header>
+    <h1>Саженцы от Махо</h1>
+    <nav>
+      <a href="#">Главная</a>
+      <a href="#">Каталог</a>
+      <a href="#">Доставка</a>
+      <a href="#">Контакты</a>
+    </nav>
+  </header>
+
+  <div class="breadcrumbs">
+    <a href="#">Главная</a> / <a href="#">Каталог</a> / Саженцы роз
+  </div>
+
+  <section>
+    <h2>Саженцы роз</h2>
+    <div class="count">Всего: 9 товаров</div>
+
+    <div class="catalog">
+
+      <div class="card">
+        <img src="rose1.jpg" alt="Роза 1">
         <h3>Роза 1</h3>
-        <p>Краткое описание сорта розы.</p>
-        <a href="https://t.me/username?text=Хочу заказать Розу 1">Заказать</a>
+        <div class="price">360 ₽</div>
+        <a href="https://t.me/username?text=Хочу заказать Розу 1" target="_blank" class="buy-btn">Купить</a>
       </div>
-    </div>
-    <div class="card">
-      <img src="https://raw.githubusercontent.com/espoid2061/cvetochny-kaleidoscope/main/rose2.jpg" alt="Роза 2">
-      <div class="card-content">
+
+      <div class="card">
+        <img src="rose2.jpg" alt="Роза 2">
         <h3>Роза 2</h3>
-        <p>Краткое описание сорта розы.</p>
-        <a href="https://t.me/username?text=Хочу заказать Розу 2">Заказать</a>
+        <div class="price">370 ₽</div>
+        <a href="https://t.me/username?text=Хочу заказать Розу 2" target="_blank" class="buy-btn">Купить</a>
       </div>
-    </div>
-    <div class="card">
-      <img src="https://raw.githubusercontent.com/espoid2061/cvetochny-kaleidoscope/main/rose3.jpg" alt="Роза 3">
-      <div class="card-content">
+
+      <div class="card">
+        <img src="rose3.jpg" alt="Роза 3">
         <h3>Роза 3</h3>
-        <p>Краткое описание сорта розы.</p>
-        <a href="https://t.me/username?text=Хочу заказать Розу 3">Заказать</a>
+        <div class="price">380 ₽</div>
+        <a href="https://t.me/username?text=Хочу заказать Розу 3" target="_blank" class="buy-btn">Купить</a>
       </div>
+
+      <div class="card">
+        <img src="rose4.jpg" alt="Роза 4">
+        <h3>Роза 4</h3>
+        <div class="price">390 ₽</div>
+        <a href="https://t.me/username?text=Хочу заказать Розу 4" target="_blank" class="buy-btn">Купить</a>
+      </div>
+
+      <div class="card">
+        <img src="rose5.jpg" alt="Роза 5">
+        <h3>Роза 5</h3>
+        <div class="price">400 ₽</div>
+        <a href="https://t.me/username?text=Хочу заказать Розу 5" target="_blank" class="buy-btn">Купить</a>
+      </div>
+
+      <div class="card">
+        <img src="rose6.jpg" alt="Роза 6">
+        <h3>Роза 6</h3>
+        <div class="price">410 ₽</div>
+        <a href="https://t.me/username?text=Хочу заказать Розу 6" target="_blank" class="buy-btn">Купить</a>
+      </div>
+
+      <div class="card">
+        <img src="rose7.jpg" alt="Роза 7">
+        <h3>Роза 7</h3>
+        <div class="price">420 ₽</div>
+        <a href="https://t.me/username?text=Хочу заказать Розу 7" target="_blank" class="buy-btn">Купить</a>
+      </div>
+
+      <div class="card">
+        <img src="rose8.jpg" alt="Роза 8">
+        <h3>Роза 8</h3>
+        <div class="price">430 ₽</div>
+        <a href="https://t.me/username?text=Хочу заказать Розу 8" target="_blank" class="buy-btn">Купить</a>
+      </div>
+
+      <div class="card">
+        <img src="rose9.jpg" alt="Роза 9">
+        <h3>Роза 9</h3>
+        <div class="price">440 ₽</div>
+        <a href="https://t.me/username?text=Хочу заказать Розу 9" target="_blank" class="buy-btn">Купить</a>
+      </div>
+
     </div>
   </section>
 
-  <form action="https://formspree.io/f/mzzzzqya" method="POST">
-    <h2>Оставить заявку</h2>
-    <input type="text" name="name" placeholder="Ваше имя" required>
-    <input type="email" name="email" placeholder="Ваш Email" required>
-    <textarea name="message" rows="4" placeholder="Ваше сообщение"></textarea>
-    <button type="submit">Отправить</button>
-  </form>
+  <section>
+    <h2>Оставьте заявку</h2>
+    <form action="https://formspree.io/f/твоя_форма" method="POST">
+      <input type="text" name="name" placeholder="Ваше имя" required>
+      <input type="tel" name="phone" placeholder="Телефон" required>
+      <textarea name="message" placeholder="Комментарий"></textarea>
+      <button type="submit" class="buy-btn">Отправить заявку</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Саженцы от Махо</p>
+    <p>Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a> | Telegram: <a href="https://t.me/username">@username</a></p>
+  </footer>
+
 </body>
 </html>
