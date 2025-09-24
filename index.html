@@ -10,12 +10,15 @@
       margin: 0;
       color: #333;
 
-      /* Фоновое изображение */
-      background-image: url('https://i.pinimg.com/736x/d7/f1/31/d7f13115e8857669be9344170d2231a3.jpg');
-      background-size: cover; 
-      background-position: center; 
-      background-repeat: no-repeat; 
-      background-attachment: fixed;
+     body {
+  background-image: url('https://i.pinimg.com/736x/d7/f1/31/d7f13115e8857669be9344170d2231a3.jpg');
+  background-size: contain;   /* картинка целиком */
+  background-position: center; /* по центру */
+  background-repeat: no-repeat; /* не повторяется */
+  background-attachment: fixed; /* фон «приклеен» */
+  background-color: #f5f5f5; /* фон-заполнитель вокруг */
+}
+
     }
 
     header {
